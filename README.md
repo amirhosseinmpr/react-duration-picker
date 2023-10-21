@@ -18,7 +18,7 @@ Then in your React component:
 | initialDuration | {hours: number, minutes: number, seconds: number}           | {hours: 0, minutes: 0, seconds: 0} | Duration to display on first render                                                          |
 | maxHours        | number                                                      | 10                                 | Max number of hours that can be selected                                                     |
 | noHours         | boolean                                                     | false                              | If true, omits 'hours' column from picker                                                    |
-
+noSecounds	boolean	false	If true, omits 'Secounds' column from picker
 # Example
 
 ```javascript

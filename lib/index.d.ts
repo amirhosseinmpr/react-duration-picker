@@ -2,7 +2,7 @@ declare module DurationPicker {
   interface Duration {
     hours?: number;
     minutes: number;
-    seconds: number;
+    seconds?: number;
   }
 
   interface Props {
@@ -10,6 +10,7 @@ declare module DurationPicker {
     initialDuration?: DurationPicker.Duration;
     onChange?: (duration: DurationPicker.Duration) => void;
     noHours?: boolean;
+    noSecounds?: boolean;
   }
 }
 

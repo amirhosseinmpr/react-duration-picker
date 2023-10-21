@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import "./DurationPicker.css";
 import DurationPickerColumn from "./DurationPickerColumn";
 
+
 DurationPicker.propTypes = {
   onChange: PropTypes.func,
   initialDuration: PropTypes.shape({
@@ -12,17 +13,19 @@ DurationPicker.propTypes = {
   }),
   maxHours: PropTypes.number,
   noHours: PropTypes.bool,
+  noSecounds: PropTypes.bool
 };
 
 DurationPicker.defaultProps = {
   maxHours: 10,
-  onChange: () => {},
+  onChange: () => { },
   initialDuration: { hours: 0, minutes: 0, seconds: 0 },
   noHours: false,
+  noSecounds: false
 };
 
 function DurationPicker(props) {
-  const { onChange, maxHours, initialDuration, noHours } = props;
+  const { onChange, maxHours, initialDuration, noHours, noSecounds } = props;
   const [isSmallScreen, setIsSmallScreen] = useState(undefined);
   const [duration, setDuration] = useState(initialDuration);
 
@@ -57,6 +60,7 @@ function DurationPicker(props) {
   useEffect(() => {
     onChange(duration);
   }, [duration, onChange]);
+  
   return (
     <div className="rdp-picker">
       {!noHours && (
@@ -74,12 +78,13 @@ function DurationPicker(props) {
         isSmallScreen={isSmallScreen}
         initial={initialDuration.minutes}
       />
-      <DurationPickerColumn
+      {!noSecounds && <DurationPickerColumn
         onChange={onChangeSeconds}
         unit="secs"
         isSmallScreen={isSmallScreen}
         initial={initialDuration.seconds}
-      />
+      />}
+
     </div>
   );
 }
